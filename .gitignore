@@ -1,0 +1,41 @@
+# =========================
+# Compilación Java
+# =========================
+*.class
+
+# Carpetas de build (NetBeans)
+build/
+dist/
+nbbuild/
+nbdist/
+
+# =========================
+# NetBeans (IMPORTANTE)
+# =========================
+# NO ignoramos toda la carpeta nbproject
+# Solo ignoramos lo privado/local
+nbproject/private/
+nbproject/private.properties
+
+# =========================
+# Logs y temporales
+# =========================
+*.log
+*.tmp
+
+# =========================
+# Sistema operativo
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Configuración local sensible
+# =========================
+*.env
+
+# =========================
+# Otros IDEs (compatibilidad)
+# =========================
+.idea/
+.vscode/
