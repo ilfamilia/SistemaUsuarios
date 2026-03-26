@@ -46,10 +46,11 @@ El proyecto incluye el driver:
 
 ## Cómo ejecutar el proyecto
 
-1. Abrir el proyecto en NetBeans
-2. Verificar que el JDK 21 esté configurado
-3. Asegurarse de que MySQL esté corriendo
-4. Ejecutar el proyecto desde el IDE
+1. Ejecutar el archivo `database.sql` para crear la base de datos
+2. Abrir el proyecto en NetBeans
+3. Verificar que el JDK 21 esté configurado
+4. Asegurarse de que MySQL esté corriendo
+5. Ejecutar el proyecto desde el IDE
 
 ## Notas
 
