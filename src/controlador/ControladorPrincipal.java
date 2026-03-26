@@ -20,6 +20,7 @@ public class ControladorPrincipal implements ActionListener {
 
         cargarUsuariosEnTabla();
         this.vistaPrincipal.getBtnNuevo().addActionListener(this);
+        this.vistaPrincipal.getBtnActualizar().addActionListener(this);
     }
 
     private void cargarUsuariosEnTabla() {
@@ -55,6 +56,10 @@ public class ControladorPrincipal implements ActionListener {
             VentanaRegistro vistaRegistro = new VentanaRegistro();
             ControladorRegistro controladorRegistro = new ControladorRegistro(vistaRegistro, usuarioDAO);
             vistaRegistro.setVisible(true);
+        }
+
+        if (e.getSource() == vistaPrincipal.getBtnActualizar()) {
+            cargarUsuariosEnTabla();
         }
     }
 }
