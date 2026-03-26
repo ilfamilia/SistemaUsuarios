@@ -5,8 +5,11 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.VentanaPrincipal;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import vista.VentanaRegistro;
 
-public class ControladorPrincipal {
+public class ControladorPrincipal implements ActionListener {
 
     private VentanaPrincipal vistaPrincipal;
     private UsuarioDAO usuarioDAO;
@@ -16,6 +19,7 @@ public class ControladorPrincipal {
         this.usuarioDAO = usuarioDAO;
 
         cargarUsuariosEnTabla();
+        this.vistaPrincipal.getBtnNuevo().addActionListener(this);
     }
 
     private void cargarUsuariosEnTabla() {
@@ -43,5 +47,14 @@ public class ControladorPrincipal {
         }
 
         vistaPrincipal.getTablaUsuarios().setModel(modeloTabla);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == vistaPrincipal.getBtnNuevo()) {
+            VentanaRegistro vistaRegistro = new VentanaRegistro();
+            ControladorRegistro controladorRegistro = new ControladorRegistro(vistaRegistro, usuarioDAO);
+            vistaRegistro.setVisible(true);
+        }
     }
 }
