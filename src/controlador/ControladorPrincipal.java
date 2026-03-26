@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import vista.VentanaRegistro;
 import javax.swing.JOptionPane;
+import vista.VentanaLogin;
 
 public class ControladorPrincipal implements ActionListener {
 
@@ -23,6 +24,7 @@ public class ControladorPrincipal implements ActionListener {
         this.vistaPrincipal.getBtnNuevo().addActionListener(this);
         this.vistaPrincipal.getBtnActualizar().addActionListener(this);
         this.vistaPrincipal.getBtnEliminar().addActionListener(this);
+        this.vistaPrincipal.getBtnCerrarSesion().addActionListener(this);
     }
 
     private void cargarUsuariosEnTabla() {
@@ -67,6 +69,10 @@ public class ControladorPrincipal implements ActionListener {
         if (e.getSource() == vistaPrincipal.getBtnEliminar()) {
             eliminarUsuarioSeleccionado();
         }
+        
+        if (e.getSource() == vistaPrincipal.getBtnCerrarSesion()) {
+            cerrarSesion();
+        }
     }
     
     private void eliminarUsuarioSeleccionado() {
@@ -98,4 +104,10 @@ public class ControladorPrincipal implements ActionListener {
         }
     }
     
+    private void cerrarSesion() {
+        VentanaLogin vistaLogin = new VentanaLogin();
+        ControladorLogin controladorLogin = new ControladorLogin(vistaLogin, usuarioDAO);
+        vistaLogin.setVisible(true);
+        vistaPrincipal.dispose();
+    }
 }
