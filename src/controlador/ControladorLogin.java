@@ -7,6 +7,8 @@ import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.VentanaLogin;
 import vista.VentanaRegistro;
+import vista.VentanaPrincipal;
+import controlador.ControladorPrincipal;
 
 public class ControladorLogin implements ActionListener {
 
@@ -50,6 +52,12 @@ public class ControladorLogin implements ActionListener {
 
         if (usuarioEncontrado != null) {
             JOptionPane.showMessageDialog(vistaLogin, "Inicio de sesión correcto.");
+
+            VentanaPrincipal vistaPrincipal = new VentanaPrincipal();
+            ControladorPrincipal controladorPrincipal = new ControladorPrincipal(vistaPrincipal, usuarioDAO);
+
+            vistaPrincipal.setVisible(true);
+            vistaLogin.dispose();
         } else {
             JOptionPane.showMessageDialog(vistaLogin, "Usuario o contraseña incorrectos.");
         }
