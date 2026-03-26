@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDAO {
 
@@ -58,5 +60,32 @@ public class UsuarioDAO {
         }
 
         return null;
+    }
+    
+    public List<Usuario> listarUsuarios() {
+        List<Usuario> listaUsuarios = new ArrayList<>();
+
+        String sql = "SELECT id, usuario, nombre, apellido, telefono, correo_electronico, contrasena FROM usuarios";
+
+        try (Connection conexion = ConexionBD.obtenerConexion(); PreparedStatement sentencia = conexion.prepareStatement(sql); ResultSet resultado = sentencia.executeQuery()) {
+
+            while (resultado.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(resultado.getInt("id"));
+                usuario.setUsuario(resultado.getString("usuario"));
+                usuario.setNombre(resultado.getString("nombre"));
+                usuario.setApellido(resultado.getString("apellido"));
+                usuario.setTelefono(resultado.getString("telefono"));
+                usuario.setCorreoElectronico(resultado.getString("correo_electronico"));
+                usuario.setContrasena(resultado.getString("contrasena"));
+
+                listaUsuarios.add(usuario);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al listar usuarios: " + e.getMessage());
+        }
+
+        return listaUsuarios;
     }
 }
