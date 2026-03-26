@@ -17,6 +17,7 @@ public class VentanaActualizarUsuario extends javax.swing.JFrame {
      */
     public VentanaActualizarUsuario() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -205,4 +206,36 @@ public class VentanaActualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JTextField getTxtUsuario() {
+        return txtUsuario;
+    }
+
+    public javax.swing.JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public javax.swing.JTextField getTxtApellido() {
+        return txtApellido;
+    }
+
+    public javax.swing.JTextField getTxtTelefono() {
+        return txtTelefono;
+    }
+
+    public javax.swing.JTextField getTxtCorreoElectronico() {
+        return txtCorreoElectronico;
+    }
+
+    public javax.swing.JPasswordField getTxtContrasena() {
+        return txtContrasena;
+    }
+
+    public javax.swing.JButton getBtnGuardarCambios() {
+        return btnGuardarCambios;
+    }
+
+    public javax.swing.JButton getBtnCancelar() {
+        return btnCancelar;
+    }
 }
