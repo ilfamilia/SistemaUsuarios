@@ -8,6 +8,7 @@ import vista.VentanaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import vista.VentanaRegistro;
+import javax.swing.JOptionPane;
 
 public class ControladorPrincipal implements ActionListener {
 
@@ -21,6 +22,7 @@ public class ControladorPrincipal implements ActionListener {
         cargarUsuariosEnTabla();
         this.vistaPrincipal.getBtnNuevo().addActionListener(this);
         this.vistaPrincipal.getBtnActualizar().addActionListener(this);
+        this.vistaPrincipal.getBtnEliminar().addActionListener(this);
     }
 
     private void cargarUsuariosEnTabla() {
@@ -61,5 +63,39 @@ public class ControladorPrincipal implements ActionListener {
         if (e.getSource() == vistaPrincipal.getBtnActualizar()) {
             cargarUsuariosEnTabla();
         }
+        
+        if (e.getSource() == vistaPrincipal.getBtnEliminar()) {
+            eliminarUsuarioSeleccionado();
+        }
     }
+    
+    private void eliminarUsuarioSeleccionado() {
+        int filaSeleccionada = vistaPrincipal.getTablaUsuarios().getSelectedRow();
+
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(vistaPrincipal, "Debe seleccionar un usuario para eliminar.");
+            return;
+        }
+
+        String usuario = vistaPrincipal.getTablaUsuarios().getValueAt(filaSeleccionada, 4).toString();
+
+        int confirmacion = JOptionPane.showConfirmDialog(
+                vistaPrincipal,
+                "¿Está seguro de eliminar el usuario seleccionado?",
+                "Confirmar eliminación",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            boolean eliminado = usuarioDAO.eliminarUsuarioPorUsuario(usuario);
+
+            if (eliminado) {
+                JOptionPane.showMessageDialog(vistaPrincipal, "Usuario eliminado correctamente.");
+                cargarUsuariosEnTabla();
+            } else {
+                JOptionPane.showMessageDialog(vistaPrincipal, "No se pudo eliminar el usuario.");
+            }
+        }
+    }
+    
 }
