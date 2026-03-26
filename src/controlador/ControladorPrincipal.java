@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import vista.VentanaRegistro;
 import javax.swing.JOptionPane;
 import vista.VentanaLogin;
+import vista.VentanaActualizarUsuario;
 
 public class ControladorPrincipal implements ActionListener {
 
@@ -63,7 +64,7 @@ public class ControladorPrincipal implements ActionListener {
         }
 
         if (e.getSource() == vistaPrincipal.getBtnActualizar()) {
-            cargarUsuariosEnTabla();
+            abrirVentanaActualizarUsuario();
         }
         
         if (e.getSource() == vistaPrincipal.getBtnEliminar()) {
@@ -109,5 +110,26 @@ public class ControladorPrincipal implements ActionListener {
         ControladorLogin controladorLogin = new ControladorLogin(vistaLogin, usuarioDAO);
         vistaLogin.setVisible(true);
         vistaPrincipal.dispose();
+    }
+    
+    private void abrirVentanaActualizarUsuario() {
+        int filaSeleccionada = vistaPrincipal.getTablaUsuarios().getSelectedRow();
+
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(vistaPrincipal, "Debe seleccionar un usuario para actualizar.");
+            return;
+        }
+
+        String usuario = vistaPrincipal.getTablaUsuarios().getValueAt(filaSeleccionada, 4).toString();
+        Usuario usuarioSeleccionado = usuarioDAO.buscarUsuarioPorUsuario(usuario);
+
+        if (usuarioSeleccionado != null) {
+            VentanaActualizarUsuario vistaActualizarUsuario = new VentanaActualizarUsuario();
+            ControladorActualizarUsuario controladorActualizarUsuario
+                    = new ControladorActualizarUsuario(vistaActualizarUsuario, usuarioDAO, usuarioSeleccionado);
+            vistaActualizarUsuario.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(vistaPrincipal, "No se encontró el usuario seleccionado.");
+        }
     }
 }
