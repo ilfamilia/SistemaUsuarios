@@ -17,6 +17,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -152,4 +153,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollTablaUsuarios;
     private javax.swing.JTable tablaUsuarios;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JTable getTablaUsuarios() {
+        return tablaUsuarios;
+    }
+
+    public javax.swing.JButton getBtnNuevo() {
+        return btnNuevo;
+    }
+
+    public javax.swing.JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public javax.swing.JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public javax.swing.JButton getBtnCerrarSesion() {
+        return btnCerrarSesion;
+    }
 }
