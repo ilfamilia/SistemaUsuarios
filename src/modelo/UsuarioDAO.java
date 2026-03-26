@@ -103,4 +103,53 @@ public class UsuarioDAO {
             return false;
         }
     }
+    
+    public Usuario buscarUsuarioPorUsuario(String usuario) {
+        String sql = "SELECT id, usuario, nombre, apellido, telefono, correo_electronico, contrasena FROM usuarios WHERE usuario = ?";
+
+        try (Connection conexion = ConexionBD.obtenerConexion(); PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+
+            sentencia.setString(1, usuario);
+
+            try (ResultSet resultado = sentencia.executeQuery()) {
+                if (resultado.next()) {
+                    Usuario usuarioEncontrado = new Usuario();
+                    usuarioEncontrado.setId(resultado.getInt("id"));
+                    usuarioEncontrado.setUsuario(resultado.getString("usuario"));
+                    usuarioEncontrado.setNombre(resultado.getString("nombre"));
+                    usuarioEncontrado.setApellido(resultado.getString("apellido"));
+                    usuarioEncontrado.setTelefono(resultado.getString("telefono"));
+                    usuarioEncontrado.setCorreoElectronico(resultado.getString("correo_electronico"));
+                    usuarioEncontrado.setContrasena(resultado.getString("contrasena"));
+                    return usuarioEncontrado;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al buscar usuario: " + e.getMessage());
+        }
+
+        return null;
+    }
+    
+    public boolean actualizarUsuario(Usuario usuarioOriginal, Usuario usuarioActualizado) {
+        String sql = "UPDATE usuarios SET usuario = ?, nombre = ?, apellido = ?, telefono = ?, correo_electronico = ?, contrasena = ? WHERE id = ?";
+
+        try (Connection conexion = ConexionBD.obtenerConexion(); PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+
+            sentencia.setString(1, usuarioActualizado.getUsuario());
+            sentencia.setString(2, usuarioActualizado.getNombre());
+            sentencia.setString(3, usuarioActualizado.getApellido());
+            sentencia.setString(4, usuarioActualizado.getTelefono());
+            sentencia.setString(5, usuarioActualizado.getCorreoElectronico());
+            sentencia.setString(6, usuarioActualizado.getContrasena());
+            sentencia.setInt(7, usuarioOriginal.getId());
+
+            return sentencia.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar usuario: " + e.getMessage());
+            return false;
+        }
+    }
 }
