@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.VentanaLogin;
+import vista.VentanaRegistro;
 
 public class ControladorLogin implements ActionListener {
 
@@ -27,7 +28,9 @@ public class ControladorLogin implements ActionListener {
         }
 
         if (e.getSource() == vistaLogin.getBtnRegistrarse()) {
-            JOptionPane.showMessageDialog(vistaLogin, "La ventana de registro se creará en el siguiente paso.");
+            VentanaRegistro vistaRegistro = new VentanaRegistro();
+            ControladorRegistro controladorRegistro = new ControladorRegistro(vistaRegistro, usuarioDAO);
+            vistaRegistro.setVisible(true);
         }
     }
 
