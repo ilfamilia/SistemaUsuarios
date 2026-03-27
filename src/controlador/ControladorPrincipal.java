@@ -28,7 +28,7 @@ public class ControladorPrincipal implements ActionListener {
         this.vistaPrincipal.getBtnCerrarSesion().addActionListener(this);
     }
 
-    private void cargarUsuariosEnTabla() {
+    public void cargarUsuariosEnTabla() {
         String[] columnas = {"Nombre", "Apellido", "Teléfono", "Correo electrónico", "Usuario"};
 
         DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas) {
@@ -126,10 +126,14 @@ public class ControladorPrincipal implements ActionListener {
         if (usuarioSeleccionado != null) {
             VentanaActualizarUsuario vistaActualizarUsuario = new VentanaActualizarUsuario();
             ControladorActualizarUsuario controladorActualizarUsuario
-                    = new ControladorActualizarUsuario(vistaActualizarUsuario, usuarioDAO, usuarioSeleccionado);
+                    = new ControladorActualizarUsuario(vistaActualizarUsuario, usuarioDAO, usuarioSeleccionado, this);
             vistaActualizarUsuario.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(vistaPrincipal, "No se encontró el usuario seleccionado.");
         }
+    }
+    
+    public void refrescarTablaUsuarios() {
+        cargarUsuariosEnTabla();
     }
 }

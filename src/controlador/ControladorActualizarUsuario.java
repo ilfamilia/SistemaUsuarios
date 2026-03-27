@@ -12,11 +12,13 @@ public class ControladorActualizarUsuario implements ActionListener {
     private VentanaActualizarUsuario vistaActualizarUsuario;
     private UsuarioDAO usuarioDAO;
     private Usuario usuarioOriginal;
+    private ControladorPrincipal controladorPrincipal;
 
-    public ControladorActualizarUsuario(VentanaActualizarUsuario vistaActualizarUsuario, UsuarioDAO usuarioDAO, Usuario usuarioOriginal) {
+    public ControladorActualizarUsuario(VentanaActualizarUsuario vistaActualizarUsuario, UsuarioDAO usuarioDAO, Usuario usuarioOriginal, ControladorPrincipal controladorPrincipal) {
         this.vistaActualizarUsuario = vistaActualizarUsuario;
         this.usuarioDAO = usuarioDAO;
         this.usuarioOriginal = usuarioOriginal;
+        this.controladorPrincipal = controladorPrincipal;
 
         cargarDatosUsuario();
 
@@ -94,6 +96,7 @@ public class ControladorActualizarUsuario implements ActionListener {
 
         if (actualizado) {
             JOptionPane.showMessageDialog(vistaActualizarUsuario, "Usuario actualizado correctamente.");
+            controladorPrincipal.refrescarTablaUsuarios();
             vistaActualizarUsuario.dispose();
         } else {
             JOptionPane.showMessageDialog(vistaActualizarUsuario, "No se pudo actualizar el usuario.");
