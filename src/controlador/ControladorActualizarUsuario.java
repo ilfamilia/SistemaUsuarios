@@ -83,6 +83,11 @@ public class ControladorActualizarUsuario implements ActionListener {
             JOptionPane.showMessageDialog(vistaActualizarUsuario, "Debe ingresar la contraseña.");
             return;
         }
+        
+        if (usuarioDAO.existeOtroUsuarioOCorreo(usuarioOriginal.getId(), usuario, correoElectronico)) {
+            JOptionPane.showMessageDialog(vistaActualizarUsuario, "El usuario o el correo electrónico ya están registrados en otro usuario.");
+            return;
+        }
 
         Usuario usuarioActualizado = new Usuario();
         usuarioActualizado.setUsuario(usuario);
