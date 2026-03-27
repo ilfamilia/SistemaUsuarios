@@ -79,6 +79,11 @@ public class ControladorRegistro implements ActionListener {
             JOptionPane.showMessageDialog(vistaRegistro, "La contraseña y la confirmación no coinciden.");
             return;
         }
+        
+        if (usuarioDAO.existeUsuarioOCorreo(usuario, correoElectronico)) {
+            JOptionPane.showMessageDialog(vistaRegistro, "El usuario o el correo electrónico ya están registrados.");
+            return;
+        }
 
         Usuario usuarioNuevo = new Usuario();
         usuarioNuevo.setUsuario(usuario);
