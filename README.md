@@ -1,58 +1,150 @@
-# Sistema de Usuarios (Java + Swing + MySQL)
+```markdown
+# Sistema de Usuarios
 
-Aplicación de escritorio desarrollada en Java que permite la gestión de usuarios mediante un sistema completo de autenticación y administración.
+Aplicación de escritorio desarrollada en **Java** con interfaz gráfica **Swing** y base de datos **MySQL**.
 
-## Funcionalidades
+El sistema permite:
 
-- Login de usuarios
-- Registro de usuarios
-- Listado de usuarios
-- Actualización de usuarios
-- Eliminación de usuarios
-- Cierre de sesión
+- iniciar sesión
+- registrar usuarios
+- listar usuarios
+- actualizar usuarios
+- eliminar usuarios
+- cerrar sesión
+
+---
 
 ## Tecnologías utilizadas
 
-- Java (JDK 21)
-- Swing (Interfaz gráfica)
-- MySQL (Base de datos)
-- JDBC (MySQL Connector/J)
-- NetBeans (IDE)
+- Java
+- Swing
+- MySQL
+- JDBC
+- MySQL Connector/J
+- NetBeans
 
-## Arquitectura
+---
 
-El proyecto sigue el patrón de arquitectura MVC:
+## Arquitectura del proyecto
 
-- Modelo: Manejo de datos y conexión a base de datos
-- Vista: Interfaces gráficas (Swing)
-- Controlador: Lógica de la aplicación
+El proyecto fue desarrollado siguiendo el patrón **MVC**:
+
+- **Modelo**: clases de datos y acceso a base de datos
+- **Vista**: formularios gráficos en Swing
+- **Controlador**: lógica de eventos y comunicación entre vista y modelo
+
+---
+
+## Estructura del proyecto
+
+```text
+src
+├── conexion
+│   └── ConexionBD.java
+├── controlador
+│   ├── ControladorActualizarUsuario.java
+│   ├── ControladorLogin.java
+│   ├── ControladorPrincipal.java
+│   └── ControladorRegistro.java
+├── modelo
+│   ├── Usuario.java
+│   └── UsuarioDAO.java
+├── principal
+│   └── Main.java
+└── vista
+    ├── VentanaActualizarUsuario.java
+    ├── VentanaLogin.java
+    ├── VentanaPrincipal.java
+    └── VentanaRegistro.java
+
+```
+
+---
 
 ## Base de datos
 
-El sistema utiliza MySQL.
+Nombre de la base de datos:
 
-### Datos de conexión por defecto:
+- sistema_usuarios
 
-- Host: localhost
-- Puerto: 3306
-- Usuario: root
-- Contraseña: (la configurada durante la instalación)
+Tabla principal:
 
-## Librerías
+- usuarios
 
-El proyecto incluye el driver:
+Campos:
 
-- mysql-connector-j-9.6.0.jar
+- id
+- usuario
+- nombre
+- apellido
+- telefono
+- correo_electronico
+- contrasena
 
-## Cómo ejecutar el proyecto
+---
 
-1. Ejecutar el archivo `database.sql` para crear la base de datos
+## Requisitos para ejecutar
+
+Antes de ejecutar el proyecto debes tener instalado:
+
+- JDK
+- NetBeans
+- MySQL Server
+- MySQL Connector/J
+
+También debes:
+
+- ejecutar el archivo `database.sql`
+- configurar correctamente el archivo `ConexionBD.java` con tu usuario y contraseña de MySQL
+
+---
+
+## Ejecución del proyecto
+
+1. Ejecutar el archivo `database.sql`
 2. Abrir el proyecto en NetBeans
-3. Verificar que el JDK 21 esté configurado
-4. Asegurarse de que MySQL esté corriendo
-5. Ejecutar el proyecto desde el IDE
+3. Verificar que el archivo `ConexionBD.java` tenga las credenciales correctas
+4. Ejecutar la clase:
 
-## Notas
+```text
 
-- La base de datos debe estar creada previamente
-- Se recomienda revisar la configuración de conexión en el código
+principal.Main
+
+```
+
+---
+
+## Funcionalidades principales
+
+### Login
+
+Permite iniciar sesión con usuario y contraseña.
+
+### Registro
+
+Permite registrar nuevos usuarios con validaciones.
+
+### Listado de usuarios
+
+Muestra los usuarios registrados en una tabla.
+
+### Actualización
+
+Permite modificar los datos de un usuario seleccionado.
+
+### Eliminación
+
+Permite eliminar un usuario seleccionado.
+
+### Cierre de sesión
+
+Permite salir de la ventana principal y volver al login.
+
+---
+
+## Autor
+
+Proyecto académico individual de Programación 1.
+```
+
+---
