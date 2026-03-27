@@ -59,6 +59,13 @@ public class ControladorPrincipal implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vistaPrincipal.getBtnNuevo()) {
             VentanaRegistro vistaRegistro = new VentanaRegistro();
+            vistaRegistro.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e) {
+                    refrescarTablaUsuarios();
+                }
+            });
+
             ControladorRegistro controladorRegistro = new ControladorRegistro(vistaRegistro, usuarioDAO);
             vistaRegistro.setVisible(true);
         }
