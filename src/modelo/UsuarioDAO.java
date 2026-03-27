@@ -152,4 +152,22 @@ public class UsuarioDAO {
             return false;
         }
     }
+    
+    public boolean existeUsuarioOCorreo(String usuario, String correoElectronico) {
+        String sql = "SELECT id FROM usuarios WHERE usuario = ? OR correo_electronico = ?";
+
+        try (Connection conexion = ConexionBD.obtenerConexion(); PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+
+            sentencia.setString(1, usuario);
+            sentencia.setString(2, correoElectronico);
+
+            try (ResultSet resultado = sentencia.executeQuery()) {
+                return resultado.next();
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al verificar usuario o correo existente: " + e.getMessage());
+            return false;
+        }
+    }
 }
