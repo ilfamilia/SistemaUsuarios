@@ -170,4 +170,23 @@ public class UsuarioDAO {
             return false;
         }
     }
+    
+    public boolean existeOtroUsuarioOCorreo(int idUsuario, String usuario, String correoElectronico) {
+        String sql = "SELECT id FROM usuarios WHERE (usuario = ? OR correo_electronico = ?) AND id <> ?";
+
+        try (Connection conexion = ConexionBD.obtenerConexion(); PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+
+            sentencia.setString(1, usuario);
+            sentencia.setString(2, correoElectronico);
+            sentencia.setInt(3, idUsuario);
+
+            try (ResultSet resultado = sentencia.executeQuery()) {
+                return resultado.next();
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al verificar duplicados en actualización: " + e.getMessage());
+            return false;
+        }
+    }
 }
