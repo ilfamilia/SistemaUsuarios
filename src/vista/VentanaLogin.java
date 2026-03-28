@@ -115,7 +115,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarse)
                     .addComponent(btnIniciarSesion))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
