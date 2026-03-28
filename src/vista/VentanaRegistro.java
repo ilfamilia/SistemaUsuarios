@@ -52,113 +52,137 @@ public class VentanaRegistro extends javax.swing.JFrame {
         setTitle("Registro de Usuario");
         setResizable(false);
 
+        panelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(0, 47, 108));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("REGISTRO DE USUARIO");
 
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(60, 60, 60));
         lblUsuario.setText("Usuario");
 
+        lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(60, 60, 60));
         lblNombre.setText("Nombre");
 
+        lblApellido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblApellido.setForeground(new java.awt.Color(60, 60, 60));
         lblApellido.setText("Apellido");
 
+        lblTelefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblTelefono.setForeground(new java.awt.Color(60, 60, 60));
         lblTelefono.setText("Teléfono");
 
+        lblCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCorreoElectronico.setForeground(new java.awt.Color(60, 60, 60));
         lblCorreoElectronico.setText("Correo electrónico");
 
+        lblContrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblContrasena.setForeground(new java.awt.Color(60, 60, 60));
         lblContrasena.setText("Contraseña");
 
+        lblConfirmarContrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblConfirmarContrasena.setForeground(new java.awt.Color(60, 60, 60));
         lblConfirmarContrasena.setText("Confirmar contraseña");
 
-        txtUsuario.setText("jTextField1");
+        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        txtNombre.setText("jTextField1");
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        txtApellido.setText("jTextField1");
+        txtApellido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        txtTelefono.setText("jTextField1");
+        txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        txtCorreoElectronico.setText("jTextField1");
+        txtCorreoElectronico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        txtContrasena.setText("jPasswordField1");
+        txtContrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        txtConfirmarContrasena.setText("jPasswordField1");
+        txtConfirmarContrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        btnRegistrar.setBackground(new java.awt.Color(0, 98, 152));
+        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("Registrar");
 
+        btnCancelar.setBackground(new java.awt.Color(220, 220, 220));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(40, 40, 40));
         btnCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
         panelPrincipalLayout.setHorizontalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelPrincipalLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addComponent(btnRegistrar)
-                                .addGap(41, 41, 41)
-                                .addComponent(btnCancelar))
-                            .addComponent(txtConfirmarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblUsuario)
-                            .addComponent(lblConfirmarContrasena)
-                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblContrasena)
-                            .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCorreoElectronico)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTelefono)
-                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblUsuario)
+                    .addComponent(lblNombre)
+                    .addComponent(lblApellido)
+                    .addComponent(lblTelefono)
+                    .addComponent(lblCorreoElectronico)
+                    .addComponent(lblContrasena)
+                    .addComponent(lblConfirmarContrasena)
+                    .addComponent(txtNombre)
+                    .addComponent(txtApellido)
+                    .addComponent(txtTelefono)
+                    .addComponent(txtCorreoElectronico)
+                    .addComponent(txtContrasena)
+                    .addComponent(txtConfirmarContrasena)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblApellido)
-                            .addComponent(lblNombre)
-                            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(lblTitulo)))))
-                .addGap(98, 98, 98))
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar))
+                    .addComponent(txtUsuario))
+                .addGap(48, 48, 48))
         );
+
+        panelPrincipalLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnRegistrar});
+
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addGap(16, 16, 16)
                 .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(lblUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(lblNombre)
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(lblApellido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(lblTelefono)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(24, 24, 24)
                 .addComponent(lblCorreoElectronico)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(lblContrasena)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(lblConfirmarContrasena)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtConfirmarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnRegistrar)))
+                    .addComponent(btnRegistrar)
+                    .addComponent(btnCancelar))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,7 +195,7 @@ public class VentanaRegistro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

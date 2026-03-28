@@ -101,7 +101,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         panelPrincipalLayout.setVerticalGroup(
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(16, 16, 16)
                 .addComponent(lblTitulo)
                 .addGap(32, 32, 32)
                 .addComponent(lblUsuario)
