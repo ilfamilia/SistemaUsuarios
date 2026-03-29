@@ -53,6 +53,7 @@ public class ControladorPrincipal implements ActionListener {
         }
 
         vistaPrincipal.getTablaUsuarios().setModel(modeloTabla);
+        vistaPrincipal.configurarTabla();
     }
     
     @Override

@@ -4,10 +4,11 @@
  */
 package vista;
 
-/**
- *
- * @author ilfamilia
- */
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
@@ -188,5 +189,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public javax.swing.JButton getBtnCerrarSesion() {
         return btnCerrarSesion;
+    }
+    
+    public void configurarTabla() {
+        DefaultTableCellRenderer centradoCeldas = new DefaultTableCellRenderer();
+        centradoCeldas.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < tablaUsuarios.getColumnCount(); i++) {
+            tablaUsuarios.getColumnModel().getColumn(i).setCellRenderer(centradoCeldas);
+        }
+
+        tablaUsuarios.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+
+        TableColumn columnaNombre = tablaUsuarios.getColumnModel().getColumn(0);
+        TableColumn columnaApellido = tablaUsuarios.getColumnModel().getColumn(1);
+        TableColumn columnaTelefono = tablaUsuarios.getColumnModel().getColumn(2);
+        TableColumn columnaCorreo = tablaUsuarios.getColumnModel().getColumn(3);
+        TableColumn columnaUsuario = tablaUsuarios.getColumnModel().getColumn(4);
+
+        columnaNombre.setPreferredWidth(120);
+        columnaApellido.setPreferredWidth(120);
+        columnaTelefono.setPreferredWidth(110);
+        columnaCorreo.setPreferredWidth(220);
+        columnaUsuario.setPreferredWidth(110);
+
+        JTableHeader encabezado = tablaUsuarios.getTableHeader();
+        encabezado.setReorderingAllowed(false);
+        encabezado.setPreferredSize(new java.awt.Dimension(encabezado.getWidth(), 32));
+
+        DefaultTableCellRenderer renderEncabezado = (DefaultTableCellRenderer) encabezado.getDefaultRenderer();
+        renderEncabezado.setHorizontalAlignment(SwingConstants.CENTER);
+
+        tablaUsuarios.setRowHeight(28);
     }
 }
