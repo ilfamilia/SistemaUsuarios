@@ -8,6 +8,11 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
     
@@ -101,7 +106,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
                         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48))
         );
@@ -125,7 +130,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,14 +199,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     public void configurarTabla() {
-        DefaultTableCellRenderer centradoCeldas = new DefaultTableCellRenderer();
-        centradoCeldas.setHorizontalAlignment(SwingConstants.CENTER);
+        DefaultTableCellRenderer renderZebra = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable tabla, Object valor, boolean seleccionado, boolean enfocado, int fila, int columna) {
+                Component celda = super.getTableCellRendererComponent(tabla, valor, seleccionado, enfocado, fila, columna);
+
+                setHorizontalAlignment(SwingConstants.CENTER);
+
+                if (seleccionado) {
+                    celda.setBackground(tabla.getSelectionBackground());
+                    celda.setForeground(tabla.getSelectionForeground());
+                } else {
+                    if (fila % 2 == 0) {
+                        celda.setBackground(Color.WHITE);
+                    } else {
+                        celda.setBackground(new Color(245, 245, 245));
+                    }
+                    celda.setForeground(new Color(60, 60, 60));
+                }
+
+                return celda;
+            }
+        };
 
         for (int i = 0; i < tablaUsuarios.getColumnCount(); i++) {
-            tablaUsuarios.getColumnModel().getColumn(i).setCellRenderer(centradoCeldas);
+            tablaUsuarios.getColumnModel().getColumn(i).setCellRenderer(renderZebra);
         }
 
-        tablaUsuarios.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tablaUsuarios.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
 
         TableColumn columnaNombre = tablaUsuarios.getColumnModel().getColumn(0);
         TableColumn columnaApellido = tablaUsuarios.getColumnModel().getColumn(1);
@@ -207,19 +234,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         TableColumn columnaCorreo = tablaUsuarios.getColumnModel().getColumn(3);
         TableColumn columnaUsuario = tablaUsuarios.getColumnModel().getColumn(4);
 
-        columnaNombre.setPreferredWidth(120);
-        columnaApellido.setPreferredWidth(120);
-        columnaTelefono.setPreferredWidth(110);
-        columnaCorreo.setPreferredWidth(220);
-        columnaUsuario.setPreferredWidth(110);
+        columnaNombre.setPreferredWidth(110);
+        columnaApellido.setPreferredWidth(110);
+        columnaTelefono.setPreferredWidth(100);
+        columnaCorreo.setPreferredWidth(180);
+        columnaUsuario.setPreferredWidth(100);
 
         JTableHeader encabezado = tablaUsuarios.getTableHeader();
         encabezado.setReorderingAllowed(false);
         encabezado.setPreferredSize(new java.awt.Dimension(encabezado.getWidth(), 32));
 
-        DefaultTableCellRenderer renderEncabezado = (DefaultTableCellRenderer) encabezado.getDefaultRenderer();
-        renderEncabezado.setHorizontalAlignment(SwingConstants.CENTER);
+        encabezado.setFont(new Font("Segoe UI", Font.BOLD, 14));
+
+        encabezado.setBackground(new Color(245, 245, 245)); 
+
+        encabezado.setForeground(new Color(60, 60, 60));
+
+        DefaultTableCellRenderer renderEncabezado = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable tabla, Object valor, boolean seleccionado, boolean enfocado, int fila, int columna) {
+                Component celda = super.getTableCellRendererComponent(tabla, valor, seleccionado, enfocado, fila, columna);
+
+                setHorizontalAlignment(SwingConstants.CENTER);
+
+                celda.setBackground(new Color(245, 245, 245));
+                celda.setForeground(new Color(60, 60, 60));
+                celda.setFont(new Font("Segoe UI", Font.BOLD, 14));
+
+                setBorder(new EmptyBorder(5, 5, 5, 5));
+
+                return celda;
+            }
+        };
+
+        encabezado.setDefaultRenderer(renderEncabezado);
 
         tablaUsuarios.setRowHeight(28);
+
+        tablaUsuarios.setShowVerticalLines(false);
+        tablaUsuarios.setShowHorizontalLines(false);
+        tablaUsuarios.setIntercellSpacing(new java.awt.Dimension(0, 0));
+
+        tablaUsuarios.setBorder(null);
+
+        scrollTablaUsuarios.setBorder(null);
+        scrollTablaUsuarios.setViewportBorder(null);
+
+        tablaUsuarios.getTableHeader().setBorder(null);
     }
 }
