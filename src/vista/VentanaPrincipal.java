@@ -199,7 +199,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     public void configurarTabla() {
-        DefaultTableCellRenderer renderZebra = new DefaultTableCellRenderer() {
+        DefaultTableCellRenderer renderFila = new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable tabla, Object valor, boolean seleccionado, boolean enfocado, int fila, int columna) {
                 Component celda = super.getTableCellRendererComponent(tabla, valor, seleccionado, enfocado, fila, columna);
@@ -223,7 +223,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         };
 
         for (int i = 0; i < tablaUsuarios.getColumnCount(); i++) {
-            tablaUsuarios.getColumnModel().getColumn(i).setCellRenderer(renderZebra);
+            tablaUsuarios.getColumnModel().getColumn(i).setCellRenderer(renderFila);
         }
 
         tablaUsuarios.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
