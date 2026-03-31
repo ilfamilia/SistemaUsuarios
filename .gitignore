@@ -23,3 +23,5 @@ Thumbs.db
 # Otros IDEs (compatibilidad)
 .idea/
 .vscode/
+
+*.iml
