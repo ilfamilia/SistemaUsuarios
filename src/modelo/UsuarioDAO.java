@@ -8,12 +8,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+// Clase que implementa el patrón DAO (Data Access Object).
+// Su responsabilidad es gestionar todas las operaciones relacionadas con la base de datos
+// para la entidad Usuario (insertar, consultar, actualizar y eliminar).
+// Esto permite separar la lógica de acceso a datos del resto del sistema.
 public class UsuarioDAO {
 
+    // Método que registra un nuevo usuario en la base de datos.
+    // Retorna true si el registro fue exitoso, false en caso contrario.
     public boolean registrarUsuario(Usuario usuario) {
         String sql = "INSERT INTO usuarios (usuario, nombre, apellido, telefono, correo_electronico, contrasena) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conexion = ConexionBD.obtenerConexion();
+                
+             // Uso de PreparedStatement para ejecutar consultas SQL de forma segura y evitar errores.   
              PreparedStatement sentencia = conexion.prepareStatement(sql)) {
 
             sentencia.setString(1, usuario.getUsuario());
@@ -31,6 +39,9 @@ public class UsuarioDAO {
         }
     }
 
+    // Método que verifica las credenciales del usuario.
+    // Retorna un objeto Usuario si las credenciales son correctas,
+    // o null si el usuario no existe o la contraseña es incorrecta.
     public Usuario iniciarSesion(String usuario, String contrasena) {
         String sql = "SELECT id, usuario, nombre, apellido, telefono, correo_electronico, contrasena "
                    + "FROM usuarios WHERE usuario = ? AND contrasena = ?";
@@ -62,6 +73,8 @@ public class UsuarioDAO {
         return null;
     }
     
+    // Método que obtiene todos los usuarios registrados en la base de datos.
+    // Retorna una lista de objetos Usuario.
     public List<Usuario> listarUsuarios() {
         List<Usuario> listaUsuarios = new ArrayList<>();
 
@@ -89,6 +102,8 @@ public class UsuarioDAO {
         return listaUsuarios;
     }
     
+    // Método que elimina un usuario de la base de datos utilizando su nombre de usuario.
+    // Retorna true si la eliminación fue exitosa.
     public boolean eliminarUsuarioPorUsuario(String usuario) {
         String sql = "DELETE FROM usuarios WHERE usuario = ?";
 
@@ -104,6 +119,8 @@ public class UsuarioDAO {
         }
     }
     
+    // Método que busca un usuario específico por su nombre de usuario.
+    // Retorna el objeto Usuario si existe, o null si no se encuentra.
     public Usuario buscarUsuarioPorUsuario(String usuario) {
         String sql = "SELECT id, usuario, nombre, apellido, telefono, correo_electronico, contrasena FROM usuarios WHERE usuario = ?";
 
@@ -132,6 +149,8 @@ public class UsuarioDAO {
         return null;
     }
     
+    // Método que actualiza los datos de un usuario existente en la base de datos.
+    // Utiliza el id del usuario original para asegurar que se actualiza el registro correcto.
     public boolean actualizarUsuario(Usuario usuarioOriginal, Usuario usuarioActualizado) {
         String sql = "UPDATE usuarios SET usuario = ?, nombre = ?, apellido = ?, telefono = ?, correo_electronico = ?, contrasena = ? WHERE id = ?";
 
@@ -153,6 +172,8 @@ public class UsuarioDAO {
         }
     }
     
+    // Método que verifica si ya existe un usuario o correo electrónico en la base de datos.
+    // Se utiliza para evitar registros duplicados.
     public boolean existeUsuarioOCorreo(String usuario, String correoElectronico) {
         String sql = "SELECT id FROM usuarios WHERE usuario = ? OR correo_electronico = ?";
 
@@ -171,6 +192,9 @@ public class UsuarioDAO {
         }
     }
     
+    // Método que verifica si otro usuario (distinto al actual) ya tiene el mismo
+    // nombre de usuario o correo electrónico.
+    // Se utiliza para validar duplicados durante la actualización.
     public boolean existeOtroUsuarioOCorreo(int idUsuario, String usuario, String correoElectronico) {
         String sql = "SELECT id FROM usuarios WHERE (usuario = ? OR correo_electronico = ?) AND id <> ?";
 
