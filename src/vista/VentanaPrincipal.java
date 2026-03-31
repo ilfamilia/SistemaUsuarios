@@ -10,10 +10,16 @@ import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
+// Vista principal del sistema.
+// Muestra la lista de usuarios registrados en una tabla y permite realizar
+// operaciones como crear, actualizar, eliminar y cerrar sesión.
+// Forma parte de la capa Vista en la arquitectura MVC.
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
 
+    // Constructor que inicializa los componentes de la interfaz
+    // y aplica configuraciones iniciales de la ventana.
     public VentanaPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
@@ -161,6 +167,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tablaUsuarios;
     // End of variables declaration//GEN-END:variables
 
+    
+    // Métodos getters que permiten al controlador interactuar con los componentes
+    // de la vista sin romper el principio de separación de responsabilidades (MVC).
+    
     public javax.swing.JTable getTablaUsuarios() {
         return tablaUsuarios;
     }
@@ -181,6 +191,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         return btnCerrarSesion;
     }
     
+    // Método encargado de aplicar configuraciones visuales a la tabla de usuarios.
+    // Incluye centrado de contenido, ajuste de columnas, estilo del encabezado,
+    // eliminación de bordes y efecto visual tipo "zebra" para mejorar la legibilidad.
     public void configurarTabla() {
         DefaultTableCellRenderer renderFila = new DefaultTableCellRenderer() {
             @Override

@@ -1,9 +1,14 @@
 package vista;
 
+// Vista correspondiente al inicio de sesión del sistema.
+// Permite al usuario ingresar sus credenciales o acceder al registro.
+// Forma parte de la capa Vista en la arquitectura MVC.
 public class VentanaLogin extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaLogin.class.getName());
 
+    // Constructor que inicializa los componentes gráficos de la ventana
+    // y la posiciona en el centro de la pantalla.
     public VentanaLogin() {
         initComponents();
         setLocationRelativeTo(null);
@@ -148,6 +153,9 @@ public class VentanaLogin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 
+    // Métodos getters que permiten al controlador acceder a los componentes
+    // de la interfaz sin acoplar directamente la lógica con la vista.
+    
     public javax.swing.JTextField getTxtUsuario() {
         return txtUsuario;
     }

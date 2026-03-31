@@ -1,9 +1,14 @@
 package vista;
 
+// Vista encargada del registro de nuevos usuarios en el sistema.
+// Contiene los campos necesarios solicitados por el mandato del proyecto.
+// Forma parte de la capa Vista dentro de la arquitectura MVC.
 public class VentanaRegistro extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaRegistro.class.getName());
 
+    // Constructor que inicializa los componentes gráficos de la ventana
+    // y la posiciona en el centro de la pantalla.
     public VentanaRegistro() {
         initComponents();
         setLocationRelativeTo(null);
@@ -226,6 +231,10 @@ public class VentanaRegistro extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
+    
+    // Métodos getters que permiten al controlador acceder a los campos
+    // y botones de la interfaz manteniendo separada la lógica de la vista.
+    
     public javax.swing.JTextField getTxtUsuario() {
         return txtUsuario;
     }
