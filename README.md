@@ -97,6 +97,9 @@ También debes:
 - ejecutar el archivo `database.sql`
 - configurar correctamente el archivo `ConexionBD.java` con tu usuario y contraseña de MySQL
 
+> Nota: por seguridad, el archivo `ConexionBD.java` contiene una contraseña de ejemplo.  
+> Debe reemplazarse por la contraseña local de MySQL antes de ejecutar el proyecto.
+
 ---
 
 ## Ejecución del proyecto

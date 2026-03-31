@@ -16,7 +16,8 @@ public class ConexionBD {
     private static final String USUARIO = "root";
     
     // Contraseña del usuario de MySQL.
-    private static final String CLAVE = "Altagracia@809";
+    // Debe reemplazarse por la contraseña local antes de ejecutar el proyecto
+    private static final String CLAVE = "CAMBIAR_POR_SU_CONTRASENA";
 
     // Método que devuelve una conexión activa con la base de datos.
     // Lanza una excepción si ocurre un error durante la conexión.
