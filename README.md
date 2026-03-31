@@ -89,15 +89,20 @@ Antes de ejecutar el proyecto debes tener instalado:
 - JDK
 - NetBeans
 - MySQL Server
-- MySQL Connector/J
 
 También debes:
 
-- ejecutar el archivo `database.sql`
+- ejecutar el archivo `database.sql` para crear la base de datos y la tabla
 - configurar correctamente el archivo `ConexionBD.java` con tu usuario y contraseña de MySQL
 
 > Nota: por seguridad, el archivo `ConexionBD.java` contiene una contraseña de ejemplo.  
 > Debe reemplazarse por la contraseña local de MySQL antes de ejecutar el proyecto.
+
+El proyecto incluye el archivo MySQL Connector/J dentro de la carpeta `librerias` para facilitar su ejecución en NetBeans.
+
+Si NetBeans no reconoce automáticamente la librería, agréguela manualmente desde:
+
+`librerias/mysql-connector-j-9.6.0.jar`
 
 ---
 
@@ -106,7 +111,8 @@ También debes:
 1. Ejecutar el archivo `database.sql`
 2. Abrir el proyecto en NetBeans
 3. Verificar que el archivo `ConexionBD.java` tenga las credenciales correctas
-4. Ejecutar la clase:
+4. Confirmar que la librería `mysql-connector-j-9.6.0.jar` esté reconocida en el proyecto
+5. Ejecutar la clase:
 
 ```text
 principal.Main
