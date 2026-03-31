@@ -5,6 +5,8 @@ import javax.swing.SwingUtilities;
 import modelo.UsuarioDAO;
 import vista.VentanaLogin;
 
+// Clase principal del sistema.
+// Su función es iniciar la aplicación y mostrar la ventana de login.
 public class Main {
 
     public static void main(String[] args) {

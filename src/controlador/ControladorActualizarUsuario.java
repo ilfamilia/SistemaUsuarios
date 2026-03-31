@@ -7,6 +7,10 @@ import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.VentanaActualizarUsuario;
 
+// Controlador encargado de gestionar la actualización de usuarios.
+// Recibe los datos del usuario seleccionado, los muestra en la vista,
+// valida los cambios y actualiza la información en la base de datos.
+// Forma parte de la capa Controlador en la arquitectura MVC.
 public class ControladorActualizarUsuario implements ActionListener {
 
     private VentanaActualizarUsuario vistaActualizarUsuario;
@@ -14,6 +18,9 @@ public class ControladorActualizarUsuario implements ActionListener {
     private Usuario usuarioOriginal;
     private ControladorPrincipal controladorPrincipal;
 
+    // Constructor que recibe la vista, el acceso a datos, el usuario original
+    // y una referencia al controlador principal para actualizar la tabla.
+    // También inicializa los eventos de la interfaz.
     public ControladorActualizarUsuario(VentanaActualizarUsuario vistaActualizarUsuario, UsuarioDAO usuarioDAO, Usuario usuarioOriginal, ControladorPrincipal controladorPrincipal) {
         this.vistaActualizarUsuario = vistaActualizarUsuario;
         this.usuarioDAO = usuarioDAO;
@@ -26,6 +33,8 @@ public class ControladorActualizarUsuario implements ActionListener {
         this.vistaActualizarUsuario.getBtnCancelar().addActionListener(this);
     }
 
+    // Método que maneja los eventos de los botones de la vista.
+    // Permite guardar cambios o cancelar la operación.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vistaActualizarUsuario.getBtnGuardarCambios()) {
@@ -37,6 +46,8 @@ public class ControladorActualizarUsuario implements ActionListener {
         }
     }
 
+    // Método que carga los datos del usuario seleccionado en los campos
+    // de la interfaz para permitir su edición.
     private void cargarDatosUsuario() {
         vistaActualizarUsuario.getTxtUsuario().setText(usuarioOriginal.getUsuario());
         vistaActualizarUsuario.getTxtNombre().setText(usuarioOriginal.getNombre());
@@ -46,6 +57,9 @@ public class ControladorActualizarUsuario implements ActionListener {
         vistaActualizarUsuario.getTxtContrasena().setText(usuarioOriginal.getContrasena());
     }
 
+    // Método que valida los datos modificados por el usuario,
+    // verifica duplicados y actualiza la información en la base de datos.
+    // Si la actualización es exitosa, refresca la tabla principal.
     private void guardarCambios() {
         String usuario = vistaActualizarUsuario.getTxtUsuario().getText().trim();
         String nombre = vistaActualizarUsuario.getTxtNombre().getText().trim();
