@@ -7,11 +7,17 @@ import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.VentanaRegistro;
 
+// Controlador encargado de gestionar la lógica del registro de usuarios.
+// Conecta la vista VentanaRegistro con el modelo UsuarioDAO.
+// Implementa ActionListener para manejar los eventos de los botones.
+// Forma parte de la capa Controlador dentro de la arquitectura MVC.
 public class ControladorRegistro implements ActionListener {
 
     private VentanaRegistro vistaRegistro;
     private UsuarioDAO usuarioDAO;
 
+    // Constructor que recibe la vista de registro y el acceso a datos.
+    // Aquí se asocian los eventos de los botones de la interfaz.
     public ControladorRegistro(VentanaRegistro vistaRegistro, UsuarioDAO usuarioDAO) {
         this.vistaRegistro = vistaRegistro;
         this.usuarioDAO = usuarioDAO;
@@ -20,6 +26,8 @@ public class ControladorRegistro implements ActionListener {
         this.vistaRegistro.getBtnCancelar().addActionListener(this);
     }
 
+    // Método que maneja los eventos generados por los botones de la vista.
+    // Permite registrar un usuario o cerrar la ventana de registro.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vistaRegistro.getBtnRegistrar()) {
@@ -31,6 +39,8 @@ public class ControladorRegistro implements ActionListener {
         }
     }
 
+    // Método que valida los datos ingresados en el formulario,
+    // verifica duplicados y registra al nuevo usuario en la base de datos.
     private void registrarUsuario() {
         String usuario = vistaRegistro.getTxtUsuario().getText().trim();
         String nombre = vistaRegistro.getTxtNombre().getText().trim();
@@ -104,6 +114,7 @@ public class ControladorRegistro implements ActionListener {
         }
     }
 
+    // Método auxiliar que limpia los campos del formulario después de un registro exitoso.
     private void limpiarCampos() {
         vistaRegistro.getTxtUsuario().setText("");
         vistaRegistro.getTxtNombre().setText("");

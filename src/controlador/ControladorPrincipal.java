@@ -12,11 +12,17 @@ import javax.swing.JOptionPane;
 import vista.VentanaLogin;
 import vista.VentanaActualizarUsuario;
 
+// Controlador principal del sistema.
+// Se encarga de gestionar la vista VentanaPrincipal y coordinar las operaciones
+// de creación, actualización, eliminación y visualización de usuarios.
+// Forma parte de la capa Controlador dentro de la arquitectura MVC.
 public class ControladorPrincipal implements ActionListener {
 
     private VentanaPrincipal vistaPrincipal;
     private UsuarioDAO usuarioDAO;
 
+    // Constructor que recibe la vista principal y el acceso a datos.
+    // Inicializa la tabla de usuarios y registra los eventos de los botones.
     public ControladorPrincipal(VentanaPrincipal vistaPrincipal, UsuarioDAO usuarioDAO) {
         this.vistaPrincipal = vistaPrincipal;
         this.usuarioDAO = usuarioDAO;
@@ -28,6 +34,8 @@ public class ControladorPrincipal implements ActionListener {
         this.vistaPrincipal.getBtnCerrarSesion().addActionListener(this);
     }
 
+    // Método que obtiene la lista de usuarios desde la base de datos
+    // y la carga en el modelo de la tabla para mostrarla en la vista.
     public void cargarUsuariosEnTabla() {
         String[] columnas = {"Nombre", "Apellido", "Teléfono", "Correo electrónico", "Usuario"};
 
@@ -56,6 +64,8 @@ public class ControladorPrincipal implements ActionListener {
         vistaPrincipal.configurarTabla();
     }
     
+    // Método que maneja los eventos de los botones de la vista principal.
+    // Permite abrir ventanas, actualizar la tabla, eliminar usuarios y cerrar sesión.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == vistaPrincipal.getBtnNuevo()) {
@@ -84,6 +94,8 @@ public class ControladorPrincipal implements ActionListener {
         }
     }
     
+    // Método que elimina el usuario seleccionado en la tabla.
+    // Solicita confirmación antes de realizar la eliminación y actualiza la vista.
     private void eliminarUsuarioSeleccionado() {
         int filaSeleccionada = vistaPrincipal.getTablaUsuarios().getSelectedRow();
 
@@ -113,6 +125,7 @@ public class ControladorPrincipal implements ActionListener {
         }
     }
     
+    // Método que cierra la sesión actual y regresa a la ventana de login.
     private void cerrarSesion() {
         VentanaLogin vistaLogin = new VentanaLogin();
         ControladorLogin controladorLogin = new ControladorLogin(vistaLogin, usuarioDAO);
@@ -120,6 +133,8 @@ public class ControladorPrincipal implements ActionListener {
         vistaPrincipal.dispose();
     }
     
+    // Método que abre la ventana de actualización para el usuario seleccionado.
+    // Obtiene los datos del usuario y los envía al controlador correspondiente.
     private void abrirVentanaActualizarUsuario() {
         int filaSeleccionada = vistaPrincipal.getTablaUsuarios().getSelectedRow();
 
@@ -141,6 +156,7 @@ public class ControladorPrincipal implements ActionListener {
         }
     }
     
+    // Método público que permite recargar la tabla de usuarios desde otros controladores.
     public void refrescarTablaUsuarios() {
         cargarUsuariosEnTabla();
     }

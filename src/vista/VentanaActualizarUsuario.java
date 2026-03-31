@@ -1,9 +1,14 @@
 package vista;
 
+// Vista encargada de la actualización de los datos de un usuario existente.
+// Permite modificar la información previamente registrada.
+// Forma parte de la capa Vista dentro de la arquitectura MVC.
 public class VentanaActualizarUsuario extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaActualizarUsuario.class.getName());
 
+    // Constructor que inicializa los componentes gráficos de la ventana
+    // y la posiciona en el centro de la pantalla.
     public VentanaActualizarUsuario() {
         initComponents();
         setLocationRelativeTo(null);
@@ -208,6 +213,10 @@ public class VentanaActualizarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 
+    
+    // Métodos getters que permiten al controlador acceder a los campos
+    // de la interfaz para cargar y actualizar la información del usuario.
+    
     public javax.swing.JTextField getTxtUsuario() {
         return txtUsuario;
     }
