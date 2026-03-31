@@ -1,4 +1,3 @@
-```markdown
 # Sistema de Usuarios
 
 Aplicación de escritorio desarrollada en **Java** con interfaz gráfica **Swing** y base de datos **MySQL**.
@@ -110,7 +109,6 @@ También debes:
 4. Ejecutar la clase:
 
 ```text
-
 principal.Main
 
 ```
@@ -147,7 +145,7 @@ Permite salir de la ventana principal y volver al login.
 
 ## Autor
 
+Israel Liranzo
 Proyecto académico individual de Programación 1.
-```
 
 ---
