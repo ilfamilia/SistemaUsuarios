@@ -145,6 +145,6 @@ Permite salir de la ventana principal y volver al login.
 
 ## Autor
 
-Israel Liranzo
+Israel Liranzo F.
 
 ---
